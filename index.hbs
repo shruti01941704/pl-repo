@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-commerce Website</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <header>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/signin">signin</a></li>
+                <li><a href="/signup">signup</a></li>
+                <li class="cart-container">
+                    <a href="#" class="cart-icon" onclick="toggleCartMenu()">
+                        <img src="cart-icon.png" alt="Cart" width="30px">
+                        <span id="cart-count">0</span> <!-- Cart item count -->
+                    </a>
+                    <!-- Cart Dropdown Menu -->
+                    <div id="cart-menu" class="cart-menu">
+                        <ul id="cart-items-list">
+                            <!-- Cart items will appear here -->
+                        </ul>
+                        <button id="checkout-button">Checkout</button>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+
+
+    <!-- Sliding Window (Carousel) -->
+ <!-- Sliding Window (Carousel) -->
+<div class="carousel">
+    <div class="carousel-images">
+        <img src="https://mercury.akamaized.net/i/85377de83bfb27c7381b39859122b1a0_295908_0.jpg" alt="Image 1">
+        <img src="https://assets.ajio.com/cms/AJIO/WEB/D-07112024-ajiomania-FreshFall24Collection-P2-Max.jpg" alt="Image 2">
+        <img src="https://assets.ajio.com/cms/AJIO/WEB/d-1.0-UHP09112024-BrandHours-Z3-P6-campus-starting499.jpg" alt="Image 3">
+        <img src="https://assets.ajio.com/cms/AJIO/WEB/D-1.0-UHP-08112024-TopBanners-Z3-P4-Showoff-kassually-Min60.jpg" alt="Image 4">
+    </div>
+</div>
+
+    <!-- Section with 10 Images -->
+    <div class="product-section" id="products">
+        <h2>Our Products</h2>
+        <div class="product-images">
+            <div class="product-row">
+                <div class="product">
+                    <img src="image1.png" alt="image 1">
+                    <button class="add-to-cart" onclick="toggleCart('Product 1')">Add to Cart</button>
+                    <button class="remove-from-cart" onclick="toggleCart('Product 1')" style="display:none;">Remove from Cart</button>
+                </div>
+                <div class="product">
+                    <img src="image2.png" alt="image 2">
+                    <button class="add-to-cart" onclick="toggleCart('Product 2')">Add to Cart</button>
+                    <button class="remove-from-cart" onclick="toggleCart('Product 2')" style="display:none;">Remove from Cart</button>
+                </div>
+                <div class="product">
+                    <img src="image3.png" alt="image 3">
+                    <button class="add-to-cart" onclick="toggleCart('Product 3')">Add to Cart</button>
+                    <button class="remove-from-cart" onclick="toggleCart('Product 3')" style="display:none;">Remove from Cart</button>
+                </div>
+                <div class="product">
+                    <img src="image4.png" alt="image 4">
+                    <button class="add-to-cart" onclick="toggleCart('Product 4')">Add to Cart</button>
+                    <button class="remove-from-cart" onclick="toggleCart('Product 4')" style="display:none;">Remove from Cart</button>
+                </div>
+                <div class="product">
+                    <img src="image5.png" alt="image 5">
+                    <button class="add-to-cart" onclick="toggleCart('Product 5')">Add to Cart</button>
+                    <button class="remove-from-cart" onclick="toggleCart('Product 5')" style="display:none;">Remove from Cart</button>
+                </div>
+            </div>
+            <div class="product-row">
+                <div class="product">
+                    <img src="image1.png" alt="image 6">
+                    <button class="add-to-cart" onclick="toggleCart('Product 6')">Add to Cart</button>
+                    <button class="remove-from-cart" onclick="toggleCart('Product 6')" style="display:none;">Remove from Cart</button>
+                </div>
+                <div class="product">
+                    <img src="image7.png" alt="image 7">
+                    <button class="add-to-cart" onclick="toggleCart('Product 7')">Add to Cart</button>
+                    <button class="remove-from-cart" onclick="toggleCart('Product 7')" style="display:none;">Remove from Cart</button>
+                </div>
+                <div class="product">
+                    <img src="image8.png" alt="image 8">
+                    <button class="add-to-cart" onclick="toggleCart('Product 8')">Add to Cart</button>
+                    <button class="remove-from-cart" onclick="toggleCart('Product 8')" style="display:none;">Remove from Cart</button>
+                </div>
+                <div class="product">
+                    <img src="image9.png" alt="image 9">
+                    <button class="add-to-cart" onclick="toggleCart('Product 9')">Add to Cart</button>
+                    <button class="remove-from-cart" onclick="toggleCart('Product 9')" style="display:none;">Remove from Cart</button>
+                </div>
+                <div class="product">
+                    <img src="image10.png" alt="image 10">
+                    <button class="add-to-cart" onclick="toggleCart('Product 10')">Add to Cart</button>
+                    <button class="remove-from-cart" onclick="toggleCart('Product 10')" style="display:none;">Remove from Cart</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2024 E-commerce Website. All rights reserved.</p>
+            <ul class="footer-links">
+                <li><a href="#">Privacy Policy</a></li>
+                <li><a href="#">Terms of Service</a></li>
+                <li><a href="#">Contact Us</a></li>
+            </ul>
+        </div>
+    </footer>
+    
+
+    <script>
+   let currentSlideIndex = 0;
+let slides = document.querySelectorAll(".carousel-images img");
+
+function moveSlide() {
+    currentSlideIndex++;
+    
+    if (currentSlideIndex >= slides.length) {
+        currentSlideIndex = 0; // Reset to the first image after the last one
+    }
+
+    updateCarousel();
+}
+
+function updateCarousel() {
+    const carouselImages = document.querySelector(".carousel-images");
+    carouselImages.style.transform = `translateX(-${currentSlideIndex * 100}%)`;
+}
+
+// Auto-slide feature (every 5 seconds)
+let autoSlide = setInterval(moveSlide, 5000);
+
+// Update carousel initially
+updateCarousel();
+// Array to keep track of the items in the cart
+// Array to keep track of the items in the cart
+let cart = [];
+
+// Function to toggle products in and out of the cart
+function toggleCart(productName, imageSrc) {
+    const index = cart.findIndex(item => item.name === productName);
+
+    if (index === -1) {
+        // Add product to the cart
+        cart.push({ name: productName, image: imageSrc });
+        alert(productName + ' has been added to your cart!');
+    } else {
+        // Remove product from the cart
+        cart.splice(index, 1);
+        alert(productName + ' has been removed from your cart!');
+    }
+
+    updateCartUI();
+}
+
+// Function to update the cart icon and dropdown with the current cart items
+function updateCartUI() {
+    // Update the cart count
+    document.getElementById('cart-count').textContent = cart.length;
+
+    // Update the cart dropdown menu
+    const cartItemsList = document.getElementById('cart-items-list');
+    cartItemsList.innerHTML = ''; // Clear current list
+
+    cart.forEach((item) => {
+        const li = document.createElement('li');
+        
+        // Create a container for the image and text
+        const itemImage = document.createElement('img');
+        itemImage.src = item.image;
+        itemImage.alt = item.name;
+        
+        const itemText = document.createElement('span');
+        itemText.textContent = item.name;
+        
+        // Append image and text to the list item
+        li.appendChild(itemImage);
+        li.appendChild(itemText);
+
+        cartItemsList.appendChild(li);
+    });
+}
+
+// Toggle cart dropdown menu visibility
+function toggleCartMenu() {
+    const cartMenu = document.getElementById('cart-menu');
+    cartMenu.classList.toggle('show');
+}
+
+
+    </script>
+
+</body>
+</html>

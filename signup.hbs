@@ -1,0 +1,41 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign Up - E-Shop</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+      <div class="logo">
+        <a href="#">E-Shop</a>
+      </div>
+      <ul class="nav-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="/signin">Sign In</a></li>
+      </ul>
+    </nav>
+
+    <!-- Sign-Up Form -->
+    <div class="form-container">
+      <form action="/signup" method="POST">
+        <label for="email">Email:</label>
+        <input type="email" name="email" id="email" required />
+        <label for="password">Password:</label>
+        <input type="password" name="password" id="password" required />
+        <button type="submit">Sign Up</button>
+      </form>
+
+    </div>
+
+    {{! <script>
+        document.getElementById('signup-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert("Signed Up Successfully!");
+        });
+    </script> }}
+
+  </body>
+</html>
